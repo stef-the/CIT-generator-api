@@ -52,6 +52,11 @@ export default function handler(
 
     const output = Array.from(new Set(duplicates).values())
 
+    fs.writeFileSync('./pages/api/items/duplicates.json', JSON.stringify({
+        data: output,
+        timestamp:
+    }))
+
 	res.status(200).json({ 
 		status: 200,
 		data: output
