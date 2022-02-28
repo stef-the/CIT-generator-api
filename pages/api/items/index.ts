@@ -1,8 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as fs from "fs";
+import internal from "stream";
 
 type Data = {
+	status: number;
 	data: any;
 };
 
@@ -26,5 +28,8 @@ export default function handler(
 		);
 	}
 
-	res.status(200).json({ data: data });
+	res.status(200).json({ 
+		status: 200,
+		data: data
+	});
 }
