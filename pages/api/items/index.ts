@@ -1,7 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as fs from "fs";
-import absoluteUrl from "next-absolute-url";
 
 type Data = {
 	status: number;
@@ -12,9 +11,9 @@ export default function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<Data>
 ) {
-	const { origin } = absoluteUrl(req);
 
-	if (origin.includes("//localhost:")) {
+	try {
+		console.log('Local')
 		const RAWitems = fs.readdirSync("NotEnoughUpdates-REPO/items");
 		let items: String[] = [];
 		let data: any[] = [];
@@ -38,6 +37,8 @@ export default function handler(
 				timestamp: Date.now(),
 			})
 		);
+	} catch {
+		console.log('Not Local')
 	}
 
 	res.status(200).json({ 
