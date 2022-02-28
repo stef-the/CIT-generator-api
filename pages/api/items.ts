@@ -27,7 +27,7 @@ export default function handler(
 			);
 		}
 
-		res.status(200).json({ test: data });
+		res.status(200).json({ data: data });
 	} else {
 	}
 }
