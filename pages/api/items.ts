@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import * as fs from "fs";
 
 type Data = {
-	data: JSON<any>;
+	data: any;
 };
 
 export default function handler(
